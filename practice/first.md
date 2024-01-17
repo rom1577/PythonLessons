@@ -6,3 +6,11 @@
 + Вывод программы:
   
 ![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/2.JPG)
+
+Задача из первого курса по работе цикла.
++ Ввод программы:
+
+![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/3.JPG)
++ Вывод программы:
+  
+![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/4.JPG)
