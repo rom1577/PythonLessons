@@ -1,2 +1,2 @@
 # Задание 1 #
-![](C:\python_lesson\1.JPG)
+<img src="file:///C:/python_lesson/1.jpg.jpg" />
