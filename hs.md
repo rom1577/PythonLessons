@@ -1,3 +1,3 @@
 # Задание 1 #
 
-![](C:\python_lesson\1.jpg)
+![](C:\\python_lesson\\1.jpg)
