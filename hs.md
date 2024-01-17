@@ -1,3 +1,3 @@
 # Задание 1 #
 
-![x](C:\\python_lesson\\1.jpg)
+![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/1.JPG)https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/1.JPG)
