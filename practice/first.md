@@ -1,3 +1,8 @@
 # Задание 1 #
-
-![x](C:\\python_lesson\\1.jpg)
+Задача из первого курса по объединению строк с помощью метода join, преобразующего массив в строку.
++ Ввод программы:
+  
+![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/1.JPG)
++ Вывод программы:
+  
+![](https://github.com/rom1577/PythonLessons/blob/main/ScreenShots/2.JPG)
