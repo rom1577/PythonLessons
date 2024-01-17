@@ -1,2 +1,2 @@
 # Задание 1 #
-![](/python_lesson/1.JPG)
+![](python_lesson/1.JPG)
