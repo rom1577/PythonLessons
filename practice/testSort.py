@@ -27,7 +27,7 @@ class DefTest(unittest.TestCase):
         b = list(range(1001, 1011))
         self.assertEqual(sortlist(a), b)
 
-    # проверка корректности работы программы, если массив состоит из элементов типа str
+    # проверка корректности работы программы, если массив состоит из элементов типа str и int
     def test_5(self):
          with self.assertRaises(TypeError):
              sortlist(["1", "2", 0, -9])
