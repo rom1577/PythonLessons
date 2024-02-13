@@ -1,5 +1,6 @@
 import os
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
+from PIL.ImageFont import FreeTypeFont
 
 # функция поиска файла в директории
 def scan_dir(path, ext, fil):
@@ -25,9 +26,9 @@ def scan_dir(path, ext, fil):
 
     return [files, dirs]
 
-# функция конвертации изображения в другой формат и рисования квадрата
+# функция конвертации изображения в другой формат, рисование квадрата и написания текста
 def func2(oldExp, newExp):
-    l = scan_dir(".", oldExp, False)
+    l = scan_dir(".",oldExp,False)
     if len(l[0]) == 0:
         return
     param = 100  # сторона квадрата в пикселях
@@ -35,9 +36,20 @@ def func2(oldExp, newExp):
         with Image.open(k) as im:  # открытие файла
             assert (param <= im.size[0])  # проверка чтобы сторона квадрата не была больше размера рисунка
             assert (param <= im.size[1])
-            draw = ImageDraw.Draw(im)
-            # черчение квадрата
-            draw.rectangle([im.size[0] / 2 - param / 2, im.size[1] / 2 - param / 2, im.size[0] / 2 + param / 2,
-                            im.size[1] / 2 + param / 2], outline=(0,0,0), width=5)
+            draw = ImageDraw.Draw(im)  # создание холста
+            # задание массивов положения
+            ar_rectangle = [im.size[0] / 2 - param / 2, im.size[1] / 2 - param / 2, im.size[0] / 2 + param / 2,
+                            im.size[1] / 2 + param / 2]
+            ar_text = [im.size[0] / 2 - param / 2, im.size[1] / 2 - param / 2 + 2/3*param, im.size[0] / 2 + param/2,
+                                 im.size[1] / 2 + param / 2]
+            # рисование прямоугольника
+            draw.rectangle(ar_rectangle, outline=(0,0,0), width=5)
+            # написание текста
+            draw.multiline_text(ar_rectangle,"Hello,", fill=(0,0,0), spacing=param/3, font_size = param/3)
+            draw.multiline_text(ar_text, "World!", fill=(0, 0, 0), spacing=param / 3, font_size=param / 3)
+            # сохранение рисунка в новом формате
             im.save(k.split(".")[0] + newExp)
-            os.remove(k.split(".")[0] + oldExp)
+            del draw  # удаление холста
+            os.remove(k.split(".")[0] + oldExp)  # удаление файла со старым расширением
+func2(".JPG",".PNG")
+
