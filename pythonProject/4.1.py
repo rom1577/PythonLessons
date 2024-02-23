@@ -51,11 +51,10 @@ class Engine:
 # класс автомобиль
 class Car:
     # в конструкторе атрибуты wheel, engine - экземпляры соответствующих классов
-    def __init__(self, pressure_user, temp_env_user, weight_user):
-        self.wheel_left_front = Wheel(pressure_user)  # экземпляр класса Wheel()
-        self.wheel_right_front = Wheel(pressure_user)  # экземпляр класса Wheel()
-        self.wheel_left_back = Wheel(pressure_user)  # экземпляр класса Wheel()
-        self.wheel_right_back = Wheel(pressure_user)  # экземпляр класса Wheel()
+    def __init__(self, pressure_user, temp_env_user, weight_user,name_wheels):
+        self.wheels = {}
+        for i in name_wheels:
+            self.wheels[i] = Wheel(pressure_user)
         self.engine = Engine(temp_env_user, weight_user)  # экземпляр класса Engine()
         self.speed = 0
 
@@ -68,13 +67,13 @@ class Car:
     def stop(self):
         self.speed = 0
 
-car = Car(2 * 101325, 35, 1000)  # экземпляр класса Car
+car = Car(2 * 101325, 35, 1000,["left_front", "right_front", "left_back", "right_back"])  # экземпляр класса Car
 car.drive()  # автомобиль едет
 print(car.engine.consunotion)  # вывод расхода автомобиля
 print(car.speed)  # вывод скорости автомобился
 car.engine.cooling(car.speed)  # выполнение охлаждения двигателя
 print(car.engine.temperature_engine)  # вывод температуры двигателя
-print(car.wheel_left_front.pressure)  # вывод давления в первом колесе
+print(car.wheels["left_front"].pressure)  # вывод давления в первом колесе
 
 # класс тело
 class Body:

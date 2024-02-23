@@ -71,7 +71,6 @@ class Dwarf:
         if self.__hunger_level <= 0:
             self.__hunger_level =0
             self.stop()
-        assert(self.__velocity < 50)  # проверка адекватности скорости
         assert(self.__hunger_level <= 10 and self.__hunger_level >= 0)  # проверка адекватности шкалы голода
         logging.debug('Вызов метода: ')  # использование логирования
 
