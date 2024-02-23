@@ -26,40 +26,41 @@ class Auto:
 class Truck(Auto):
     def __init__(self, user_name, max_user_velocity, user_cost, user_max_weght):
         super().__init__(user_name, max_user_velocity, user_cost)
-        self.__status = "разгружен"  # статус грузовика
+        # статус грузовика. "0" - разгружен; "1" - разгружается; "2" - загружается; "3" - "загружен"
+        self.__status = 0
         self.__cur_weight = 0  # текущий вес груза
         self.__max_weight = user_max_weght  # максимально возможный вес груза
 
     # переопределение метода drive()
     def drive(self):
-        if self.__status == "загружен":
+        if self.__status == 3:
             self.cur_velocity = self.max_velocity / 2  # если грузовик загружен, то его максимальная скорость меньше
-        elif self.__status == "разгружен":
+        elif self.__status == 0:
             self.cur_velocity = self.max_velocity  # если грузовик загружен, то его максимальная скорость больше
         else:
             self.cur_velocity = 0  # если статус грузовика неопределен, то его максимальная скорость равна 0
 
     # метод загрузки груза
     def load(self, weight_load):
-        self.__status = "загружается"  # изменение статуса
+        self.__status = 2  # изменение статуса
         self.__cur_weight += weight_load  # увеличение веса текущего груза
         Auto.stop(self)  # грузовик стоит
 
         # если достигнут или превышен максимальный вес груза, то изменяется статус и текущий вес максимален
         if self.__cur_weight >= self.__max_weight:
-            self.__status = "загружен"
+            self.__status = 3
             self.__cur_weight = self.__max_weight
 
     # разгрузка грузовика
     def unload(self, unload_weight):
-        self.__status = "разругжается"  # изменение статуса
+        self.__status = 1  # изменение статуса
         self.__cur_weight -= unload_weight  # уменьшение веса текущего груза
         Auto.stop(self)  # грузовик стоит
 
         # если весь груз разгружен, то текущий вес груза равен нулю и меняется статус
         if self.__cur_weight <= 0:
             self.__cur_weight = 0
-            self.__status = "разгружен"
+            self.__status = 0
 
 # класс специальных машин
 class Special_machine(Auto):
