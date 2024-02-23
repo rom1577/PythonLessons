@@ -39,20 +39,23 @@ class Engine:
         self.temperature_engine += speed / 100 + 0.1 * self.temperature_enviroment  # увеличение температуры двигателя
 
     # увеличение крутящего момента
-    def increase_torque(self, thrust_motor):
+    def increase_torque(self, thrust_motor,speed):
         gravity_force = self.weight * 9.81  # сила тяжести машины
         if gravity_force > thrust_motor:  # если сила тяжести больше тяги двигателя
-            heating()
+            self.heating(speed)
             self.consunotion += 2  # увеличение расхода топлива
         else:
-            cooling()
+            self.cooling(speed)
             self.consunotion -= 2
 
 # класс автомобиль
 class Car:
     # в конструкторе атрибуты wheel, engine - экземпляры соответствующих классов
     def __init__(self, pressure_user, temp_env_user, weight_user):
-        self.wheel = Wheel(pressure_user)  # экземпляр класса Wheel()
+        self.wheel_left_front = Wheel(pressure_user)  # экземпляр класса Wheel()
+        self.wheel_right_front = Wheel(pressure_user)  # экземпляр класса Wheel()
+        self.wheel_left_back = Wheel(pressure_user)  # экземпляр класса Wheel()
+        self.wheel_right_back = Wheel(pressure_user)  # экземпляр класса Wheel()
         self.engine = Engine(temp_env_user, weight_user)  # экземпляр класса Engine()
         self.speed = 0
 
@@ -71,8 +74,7 @@ print(car.engine.consunotion)  # вывод расхода автомобиля
 print(car.speed)  # вывод скорости автомобился
 car.engine.cooling(car.speed)  # выполнение охлаждения двигателя
 print(car.engine.temperature_engine)  # вывод температуры двигателя
-print(car.wheel.pressure)  # вывод давления в шинах колёс
-
+print(car.wheel_left_front.pressure)  # вывод давления в первом колесе
 
 # класс тело
 class Body:
