@@ -15,10 +15,6 @@ def func(array, number):
         if value >= number:
             array_out.append(key)
 
-    if len(array_out) == 0:
-        print("Число не повторяется указанное количество раз")
-        return array_out
-
     return array_out
 
 ar = []
