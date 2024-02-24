@@ -6,12 +6,7 @@ def func(array, number):
 
     # подсчет количества элементов списка, используя словарь
     for elem in array:
-        # если ключ elem уже существует
-        if elem in dictc:
-            dictc[elem] += 1
-        # если ключа elem ещё нет
-        else:
-            dictc[elem] = 1
+        dictc[elem] = dictc.get(elem, 0) + 1
 
     for key,value in dictc.items():
         # заполнение выходного списка значениями, которые повторяются не менее number раз
