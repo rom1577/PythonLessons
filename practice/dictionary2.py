@@ -10,13 +10,13 @@ def func(array, number):
     for elem in array:
         dict[elem] += 1
 
-    # заполнение выходного списка значениями, которые повторяются не менее number раз
     for key,value in dict.items():
+        # заполнение выходного списка значениями, которые повторяются не менее number раз
         if value >= number:
             array_out.append(key)
 
     if len(array_out) == 0:
-        print("Число не повторяется укащанное количество раз")
+        print("Число не повторяется указанное количество раз")
         return array_out
 
     return array_out
