@@ -6,13 +6,16 @@ def func3_2(a, b, path):
         if i == 0: file = a
         else: file = b
 
+        count = 0
         with open(path + str(file) + ".txt", "r") as f:
                 try:
-                    for j in range(3):
-                        s = f.readline()
+                    for s in f:
                         sum += int(s)
+                        count += 1
                 except Exception:
                     return [0, 1]
+        if count != 3:
+            return [0, 2]
     return [sum, 0]
 
 # предполагается, что файлы находятся в одной директорииш
