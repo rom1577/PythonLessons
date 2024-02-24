@@ -31,17 +31,18 @@ def func2(oldExp, newExp):
     l = scan_dir(".",oldExp,False)
     if len(l[0]) == 0:
         return
-    param = 100  # сторона квадрата в пикселях
+
     for k in l[0]:
+        param = 100  # сторона квадрата в пикселях
         with Image.open(k) as im:  # открытие файла
-            assert (param <= im.size[0])  # проверка чтобы сторона квадрата не была больше размера рисунка
-            assert (param <= im.size[1])
+            if param > im.size[0] or param > im.size[1]:
+                param = min(im.size[0], im.size[1]) // 2
             draw = ImageDraw.Draw(im)  # создание холста
             # задание массивов положения
-            ar_rectangle = [im.size[0] / 2 - param / 2, im.size[1] / 2 - param / 2, im.size[0] / 2 + param / 2,
-                            im.size[1] / 2 + param / 2]
-            ar_text = [im.size[0] / 2 - param / 2, im.size[1] / 2 - param / 2 + 2/3*param, im.size[0] / 2 + param/2,
-                                 im.size[1] / 2 + param / 2]
+            ar_rectangle = [im.size[0] // 2 - param // 2, im.size[1] // 2 - param // 2, im.size[0] // 2 + param // 2,
+                            im.size[1] // 2 + param // 2]
+            ar_text = [im.size[0] // 2 - param // 2, im.size[1] // 2 - param // 2 + round(2/3*param),
+                       im.size[0] // 2 + param//2, im.size[1] // 2 + param // 2]
             # рисование прямоугольника
             draw.rectangle(ar_rectangle, outline=(0,0,0), width=5)
             # написание текста
@@ -51,5 +52,5 @@ def func2(oldExp, newExp):
             im.save(k.split(".")[0] + newExp)
             del draw  # удаление холста
             os.remove(k.split(".")[0] + oldExp)  # удаление файла со старым расширением
-func2(".JPG",".PNG")
+func2(".JPEG",".PNG")
 
