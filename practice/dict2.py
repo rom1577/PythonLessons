@@ -7,11 +7,8 @@ def func(array, number):
     # подсчет количества элементов списка, используя словарь
     for elem in array:
         dictc[elem] = dictc.get(elem, 0) + 1
-
-    for key,value in dictc.items():
-        # заполнение выходного списка значениями, которые повторяются не менее number раз
-        if value >= number:
-            array_out.append(key)
+        if dictc[elem] == number:
+            array_out.append(elem)
 
     return array_out
 
