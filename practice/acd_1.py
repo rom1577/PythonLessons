@@ -85,32 +85,3 @@ class LinkedList:
             newNode.next = afterNode.next
             afterNode.next = newNode
 
-
-
-# n1 = Node(12)
-# n2 = Node(55)
-# n1.next = n2
-# print(n2.value)
-s_list = LinkedList()
-#
-s_list.add_in_tail(Node(11))
-s_list.add_in_tail(Node(11))
-s_list.add_in_tail(Node(55))
-s_list.add_in_tail(Node(128))
-s_list.add_in_tail(Node(11))
-s_list.add_in_tail(Node(11))
-s_list.add_in_tail(Node(12))
-s_list.add_in_tail(Node(15))
-# s_list.delete(55,all = True)
-s_list.len()
-print(s_list.print_all_nodes())
-# print(s_list.find_all())
-print()
-g = s_list.find(15)
-s_list.insert(None,Node(99))
-print(s_list.print_all_nodes())
-s_list.clean()
-print(s_list.len())
-# print(s_list.print_all_nodes())
-# s_list.print_all_nodes()
-
