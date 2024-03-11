@@ -32,7 +32,6 @@ class LinkedList:
         return None
 
     def find_all(self, val):
-        # здесь будет ваш код
             lenth = self.len()
             arr = []
             node = self.head
@@ -43,7 +42,6 @@ class LinkedList:
             return arr
 
     def delete(self, val, all=False):
-        # здесь будет ваш код
         node = self.head
         prev_node = None
         while node is not None:
@@ -64,12 +62,10 @@ class LinkedList:
             node = node.next
 
     def clean(self):
-        # здесь будет ваш код
         self.head = None
         self.tail = None
 
     def len(self):
-        # здесь будет ваш код
         numb = 0
         node = self.head
         while node is not None:
