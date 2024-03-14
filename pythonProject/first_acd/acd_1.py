@@ -80,10 +80,17 @@ class LinkedList:
         return numb
 
     def insert(self, afterNode, newNode):
-        if afterNode is None:
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
+        elif afterNode is None:
             newNode.next = self.head
             self.head = newNode
-        else:
+        elif afterNode == self.tail:
+            newNode.next = None
+            afterNode.next = newNode
+            self.tail = newNode
+        elif newNode is not None:
             newNode.next = afterNode.next
             afterNode.next = newNode
 
