@@ -55,7 +55,7 @@ class LinkedList2:
 
     def delete(self, val, all=False):
         node = self.head.next
-        prev_node = node
+        prev_node = node.prev
         while type(node) != Node_dum:
             if node.value == val:
                 prev_node.next = node.next
