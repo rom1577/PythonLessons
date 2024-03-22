@@ -94,34 +94,3 @@ class LinkedList2:
             node = node.next
         return ar
 
-s_list = LinkedList2()
-a1 = Node(1)
-a2 = Node(8)
-a3 = Node(5)
-
-a4 = Node(8)
-a5 = Node(8)
-# s_list.add_in_tail(a1)
-# s_list.add_in_tail(a2)
-# s_list.add_in_tail(a3)
-# s_list.add_in_tail(a4)
-# s_list.add_in_tail(a5)
-# s_list.insert(a5, Node(10))
-# s_list.delete(16,True)
-# print(s_list.find(10).value)
-# print()
-# print(s_list.len())
-# print()
-# print(s_list.find_all(8))
-# print()
-# s_list.clean()
-# print(s_list.len())
-# print(s_list.len())
-# print(s_list.head.value)
-# print()
-s_list.print_all_nodes()
-
-# a2 = Node(2)
-
-# s_list.add_in_tail(a1)
-# s_list.add_in_tail(a2)
