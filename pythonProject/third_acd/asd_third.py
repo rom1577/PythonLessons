@@ -63,7 +63,10 @@ class DynArray:
         self.array = new_array
         self.count -= 1
         new_capacity = int(self.capacity / 1.5)
-        if self.count / self.capacity < 0.5 and new_capacity >= 16:
+        if self.count / self.capacity < 0.5 and new_capacity > 16:
+            self.resize(new_capacity)
+        elif new_capacity <= 16:
+            new_capacity = 16
             self.resize(new_capacity)
 
     def to_list(self):
