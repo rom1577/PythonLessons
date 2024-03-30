@@ -30,7 +30,6 @@ class Stack:
 
 
 stack1 = Stack()
-stack2 = Stack()
 
 stack1.push(8)
 stack1.push(2)
