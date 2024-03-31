@@ -28,28 +28,17 @@ class Stack:
             a.append(self.stack[i])
         return a
 
-# функция для задания
-def skobki(s:str)->bool:
+def skobki2(s: str) -> bool:
     stack = Stack()
     st = list(s)
-
-    # заполнение стека элементами списка
-    for i in range(len(st)):
-        stack.push(st[i])
-
-    # счетчики
-    i = 0
-    k = 0
-    # удаление элементов стека в циклах
-    while stack.peek() == ')':
-        stack.pop()
-        i += 1
-        while stack.peek() == '(':
+    for i in st:
+        while i == '(':
+            stack.push(i)
+            break
+        while stack.peek() is None:
+            return False
+        while i == ')':
             stack.pop()
-            k += 1
-    return i == k and i != 0 and k != 0
-
-s = '(())(())'
-print(skobki(s))
-
+            break
+    return stack.size() == 0
 
