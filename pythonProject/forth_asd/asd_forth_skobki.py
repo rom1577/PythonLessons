@@ -28,17 +28,15 @@ class Stack:
             a.append(self.stack[i])
         return a
 
-def skobki2(s: str) -> bool:
+def skobki3(s: str) -> bool:
     stack = Stack()
     st = list(s)
     for i in st:
-        while i == '(':
+        if i == '(':
             stack.push(i)
-            break
-        while stack.peek() is None:
+        if stack.peek() is None:
             return False
-        while i == ')':
+        if i == ')':
             stack.pop()
-            break
     return stack.size() == 0
 
