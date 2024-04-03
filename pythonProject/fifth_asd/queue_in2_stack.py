@@ -43,6 +43,5 @@ class Queue:
             for i in range(self.stack1.size()):
                 self.stack2.push(self.stack1.pop())
             return self.stack2.pop()
-        else:
-            return None
+        return None
 
