@@ -27,26 +27,22 @@ class Stack:
             a.append(self.stack[i])
         return a
 
-#  класс очереди наследуется от класса стека
-class Queue(Stack):
+class Queue():
     def __init__(self):
-        super().__init__()  # создание первого стека
+        self.stack1 = Stack()
         self.stack2 = Stack()
 
     def enqueue(self, item):
-        self.push(item)  # вызов метода push для первого стека
+        self.stack1.push(item)
 
     def dequeue(self):
-        if self.size() != 0:
-            m = self.size()
+        if self.stack1.size() != 0:
+            m = self.stack1.size()
             for i in range(m):
-                self.stack2.push(self.pop())
-
-            res = self.stack2.pop()  # искомый головной элемент из первого стека
-
-            # в цикле перебрасываются элементы из второго стека в первый
+                self.stack2.push(self.stack1.pop())
+            res = self.stack2.pop()
             for i in range(m-1):
-                self.push(self.stack2.pop())
+                self.stack1.push(self.stack2.pop())
             return res
         return None
 
