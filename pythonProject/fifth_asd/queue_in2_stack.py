@@ -15,8 +15,8 @@ class Stack:
         return None
 
     def push(self, value):
+        # self.stack.append(value)
         self.stack.insert(0,value)
-
     def peek(self):
         if self.size() != 0:
             return self.stack[0]
@@ -28,31 +28,26 @@ class Stack:
             a.append(self.stack[i])
         return a
 
-#  класс очереди наследуется от класса стека,
-#  реализация стека выполнена через работу с головой списка
+#  класс очереди наследуется от класса стека
 class Queue(Stack):
     def __init__(self):
         super().__init__()  # создание первого стека
+        self.stack2 = Stack()
 
     def enqueue(self, item):
-        self.push(item)  # вызов метода push() для первого стека
+        self.push(item)  # вызов метода push для первого стека
 
     def dequeue(self):
         if self.size() != 0:
-            stack2 = Stack()  # создание второго стека
             m = self.size()
-
-            # в цикле перебрасываются элементы из первого стека во второй
             for i in range(m):
-                j = self.pop()
-                stack2.push(j)
+                self.stack2.push(self.pop())
 
-            res = stack2.pop()  # искомый головной элемент из первого стека
+            res = self.stack2.pop()  # искомый головной элемент из первого стека
 
             # в цикле перебрасываются элементы из второго стека в первый
             for i in range(m-1):
-                j = stack2.pop()
-                self.push(j)
-            print(stack2.to_list())
+                self.push(self.stack2.pop())
             return res
         return None
+

@@ -25,10 +25,8 @@ class Queue:
         return a
 
 def rotate(queue:Queue,N:int)->Queue:
-    if queue.size() != 0:
-        for i in range(N):
-            a = queue.dequeue()
-            queue.enqueue(a)
-        return queue
-    return None
+    for i in range(N):
+        queue.enqueue(queue.dequeue())
+    return queue
+
 
