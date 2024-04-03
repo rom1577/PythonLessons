@@ -27,7 +27,8 @@ class Stack:
             a.append(self.stack[i])
         return a
 
-class Queue():
+
+class Queue:
     def __init__(self):
         self.stack1 = Stack()
         self.stack2 = Stack()
@@ -36,13 +37,12 @@ class Queue():
         self.stack1.push(item)
 
     def dequeue(self):
-        if self.stack1.size() != 0:
-            m = self.stack1.size()
-            for i in range(m):
+        if self.stack2.size() != 0:
+            return self.stack2.pop()
+        elif self.stack1.size() != 0:
+            for i in range(self.stack1.size()):
                 self.stack2.push(self.stack1.pop())
-            res = self.stack2.pop()
-            for i in range(m-1):
-                self.stack1.push(self.stack2.pop())
-            return res
-        return None
+            return self.stack2.pop()
+        else:
+            return None
 
