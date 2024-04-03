@@ -15,7 +15,6 @@ class Stack:
         return None
 
     def push(self, value):
-        # self.stack.append(value)
         self.stack.insert(0,value)
     def peek(self):
         if self.size() != 0:
