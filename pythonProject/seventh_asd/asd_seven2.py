@@ -4,6 +4,7 @@ class Node:
         self.prev = None
         self.next = None
 
+
 class OrderedList:
     def __init__(self, asc):
         self.head = None
@@ -54,7 +55,7 @@ class OrderedList:
         node = self.head
         while node is not None:
             if node.value == val:
-                return node.value
+                return node
             elif self.compare(node.value,val) == -1 and not self.__ascending:
                 return None
             elif self.compare(node.value,val) == 1 and self.__ascending:
@@ -134,6 +135,7 @@ class OrderedList:
             ar.append(node.value)
             node = node.next
         return ar
+
 
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
