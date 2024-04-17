@@ -47,5 +47,3 @@ class HashTable:
             if len(ar) >= self.size:
                 return None
 
-
-print(5%5)
