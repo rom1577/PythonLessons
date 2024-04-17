@@ -15,8 +15,11 @@ class HashTable:
         index = self.hash_fun(value)
         ar = {}
         while self.slots[index] is not None:
+            a = index
             index = (index + self.step) % self.size
             ar[index] = None
+            if a > index:
+                index = (index +1) % self.size
             if len(ar) >= self.size:
                 return None
         return index
@@ -34,10 +37,15 @@ class HashTable:
             return index
         ar = {}
         while True:
+            a = index
             index = (index + self.step) % self.size
             ar[index] = None
             if self.slots[index] == value:
                 return index
+            if a > index:
+                index = (index +1) % self.size
             if len(ar) >= self.size:
                 return None
 
+
+print(5%5)
