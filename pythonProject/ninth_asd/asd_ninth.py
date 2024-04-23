@@ -31,11 +31,9 @@ class NativeDictionary:
 
     def get(self, key):
         index = self.hash_fun(key)
-        a = 0
+        if not self.is_key(key):
+            return None
         while self.slots[index] != key:
             index = (index + 1) % self.size
-            if a > self.size:
-                return None
-            a += 1
         return self.values[index]
 
