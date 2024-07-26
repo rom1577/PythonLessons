@@ -1,0 +1,64 @@
+--1
+
+SELECT D.dwarf_id, D.name AS dwarf_name, D.age, D.profession,
+    S.squad_id, S.name AS squad_name, S.mission
+FROM 
+    Dwarves AS D INNER JOIN Squads AS S 
+    ON D.squad_id = S.squad_id
+WHERE 
+    D.squad_id IS NOT NULL
+
+--2 
+
+SELECT name
+FROM Dwarves 
+WHERE profession = 'miner' 
+  AND squad_id IS NULL
+
+--3
+
+SELECT discription
+FROM Tasks 
+WHERE priority = (SELECT MAX(priority) FROM Tasks)
+  AND status = 'pending'
+
+--4
+
+SELECT owner_id, COUNT(*) AS item_count
+FROM Items
+WHERE owner_id IS NOT NULL
+GROUP BY owner_id
+
+--5 
+
+SELECT s.name, COUNT(d.dwarf_id) AS dwarf_count
+FROM Squads AS s LEFT JOIN Dwarves AS d 
+   ON s.squad_id = d.squad_id
+GROUP BY s.name
+
+--6 
+
+SELECT d.profession, COUNT(t.status) AS incomplete_task_count
+FROM Dwarves AS d INNER JOIN Tasks AS t
+   ON d.dwarf_id = t.assigned_to
+WHERE t.status IN ('pending', 'in_progress')
+GROUP BY d.profession
+
+--7
+
+SELECT i.type, AVG(d.age) AS average_age
+FROM Items AS i INNER JOIN Dwarves AS d 
+   ON i.dwarf_id = d.dwarf_id
+WHERE i.dwarf_id IS NOT NULL
+GROUP BY i.type
+
+--8
+
+SELECT name
+FROM Dwarves 
+WHERE age > (SELECT AVG(age) FROM Dwarves)
+  AND dwarf_id NOT IN (
+			SELECT owner_id 
+			FROM Items 
+			WHERE owner_id IS NOT NULL)
+
