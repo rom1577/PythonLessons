@@ -1,15 +1,17 @@
-def is_polindrom(string:str):
-    '''
-    :return 1 - строка полиндром
-    :return 0 - строка не полиндром
-    '''
+def is_recursive_palindrome(string: str, i:int):
+    if i > len(string) // 2:
+        return True
+    if string[i-1] == string[-i]:
+        i += 1
+        return is_recursive_palindrome(string, i)
+    return False
+
+# основная функция для вызова
+def is_palindrome(string: str):
     string = ''.join(string.split())
     string = string.lower()
-
-    if len(string) == 0:
-        return 1
-
-    if string[0] == string[-1]:
-        return is_polindrom(string[1:-1])
-    return 0
+    i = 1
+    if is_recursive_palindrome(string, i):
+        return True
+    return False
 
