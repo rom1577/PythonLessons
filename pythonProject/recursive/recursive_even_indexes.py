@@ -1,9 +1,8 @@
-def find_even_element(number_list: list):
-    if len(number_list) == 0:
+def find_even_indexes(number_list: list, i=0):
+    if i == len(number_list):
         return
-
-    a = number_list.pop(0)
-    if a % 2 == 0:
-        print(a)
-    return find_even_element(number_list)
+    if number_list[i] % 2 == 0:
+        print(i)
+    i += 1
+    return find_even_indexes(number_list, i)
 
