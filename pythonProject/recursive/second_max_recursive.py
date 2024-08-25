@@ -1,5 +1,3 @@
-from functools import reduce
-
 def find_second_max(list_of_numbers: list, first_max_element: int):
     '''
     Функция для расчета второго максимального элемента списка
@@ -16,11 +14,15 @@ def find_second_max(list_of_numbers: list, first_max_element: int):
     else:
         return second_max_element
 
-def find_first_max(x, y):
+def find_first_max(list_of_numbers: list)->int:
     '''
     Функция для нахождения первого максимального элемента в списке
     '''
-    return x if x > y else y
+    max_element = list_of_numbers[0]
+    for i in range(1, len(list_of_numbers)):
+        if max_element < list_of_numbers[i]:
+            max_element = list_of_numbers[i]
+    return max_element
 
 def find_second_max_input(list_of_numbers: list):
     '''
@@ -29,6 +31,6 @@ def find_second_max_input(list_of_numbers: list):
     if len(list_of_numbers) < 2:
         return None
 
-    first_max = reduce(find_first_max, list_of_numbers)
+    first_max = find_first_max(list_of_numbers)
     return find_second_max(list_of_numbers, first_max)  # Определение второго максимального элемента
 
