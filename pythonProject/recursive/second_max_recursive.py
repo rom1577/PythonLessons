@@ -8,17 +8,17 @@ def find_second_max_input(list_of_numbers: list):
     else:
         max1 = list_of_numbers[1]
         max2 = list_of_numbers[0]
-    return find_second_max(list_of_numbers[2:], max1, max2)
+    return find_second_max(list_of_numbers, max1, max2)
 
-def find_second_max(list_of_numbers: list, first_max_element: int, second_max_element: int)->int:
-    if len(list_of_numbers) == 0:
+def find_second_max(list_of_numbers: list, first_max_element: int, second_max_element: int, i=2)->int:
+    if i == len(list_of_numbers):
         return second_max_element
 
-    if list_of_numbers[0] >= first_max_element:
+    if list_of_numbers[i] >= first_max_element:
         second_max_element = first_max_element
-        first_max_element = list_of_numbers[0]
-    elif list_of_numbers[0] > second_max_element:
-        second_max_element = list_of_numbers[0]
-
-    return find_second_max(list_of_numbers[1:], first_max_element, second_max_element)
+        first_max_element = list_of_numbers[i]
+    elif list_of_numbers[i] > second_max_element:
+        second_max_element = list_of_numbers[i]
+    i +=1
+    return find_second_max(list_of_numbers, first_max_element, second_max_element,i)
 
