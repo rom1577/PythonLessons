@@ -3,24 +3,30 @@ def find_second_max_input(list_of_numbers: list):
         return None
 
     if list_of_numbers[0] > list_of_numbers[1]:
-        max1 = list_of_numbers.pop(0)
-        max2 = list_of_numbers.pop(0)
+        max1 = list_of_numbers[0]
+        max2 = list_of_numbers[1]
     else:
-        max2 = list_of_numbers.pop(0)
-        max1 = list_of_numbers.pop(0)
-    return find_second_max(list_of_numbers, max1, max2)
+        max1 = list_of_numbers[1]
+        max2 = list_of_numbers[0]
+    return find_second_maxT(list_of_numbers, max1, max2)
 
-def find_second_max(list_of_numbers: list, first_max_element: int, second_max_element: int)->int:
-    if len(list_of_numbers) == 0:
-        return second_max_element
+def find_second_maxT(list_of_numbers: list, first_max_element: int, second_max_element: int) -> int:
+    def helper(index: int) -> int:
+        nonlocal second_max_element
+        nonlocal first_max_element
 
-    cur_element = list_of_numbers.pop(0)
+        if index >= len(list_of_numbers):
+            return second_max_element
 
-    if cur_element >= first_max_element:
-        second_max_element = first_max_element
-        first_max_element = cur_element
-    elif cur_element > second_max_element:
-        second_max_element = cur_element
+        cur_element = list_of_numbers[index]
 
-    return find_second_max(list_of_numbers, first_max_element, second_max_element)
+        if cur_element >= first_max_element:
+            second_max_element = first_max_element
+            first_max_element = cur_element
+        elif cur_element > second_max_element:
+            second_max_element = cur_element
+
+        return helper(index + 1)
+
+    return helper(2)  # Начинаем с индекса 2
 
