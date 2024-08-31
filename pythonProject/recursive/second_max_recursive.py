@@ -8,10 +8,10 @@ def find_second_max_input(list_of_numbers: list):
     else:
         max1 = list_of_numbers[1]
         max2 = list_of_numbers[0]
-    return find_second_maxT(list_of_numbers, max1, max2)
+    return find_second_max(list_of_numbers, max1, max2)
 
-def find_second_maxT(list_of_numbers: list, first_max_element: int, second_max_element: int) -> int:
-    def helper(index: int) -> int:
+def find_second_max(list_of_numbers: list, first_max_element: int, second_max_element: int) -> int:
+    def inner_search(index: int) -> int:
         nonlocal second_max_element
         nonlocal first_max_element
 
@@ -26,7 +26,7 @@ def find_second_maxT(list_of_numbers: list, first_max_element: int, second_max_e
         elif cur_element > second_max_element:
             second_max_element = cur_element
 
-        return helper(index + 1)
+        return inner_search(index + 1)
 
-    return helper(2)  # Начинаем с индекса 2
+    return inner_search(2)  # Начинаем с индекса 2
 
